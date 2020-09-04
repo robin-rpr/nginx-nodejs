@@ -15,11 +15,7 @@ RUN curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash - \
  
 # Install Nginx Stable
 RUN add-apt-repository ppa:nginx/stable && apt-get update \
- && apt-get -y install nginx-full \
- && echo "daemon off;" >> /etc/nginx/nginx.conf
+ && apt-get -y install nginx-full
 
-# Add Config files
-ADD nginx-nodejs.conf /etc/supervisor/conf.d/nginx-nodejs.conf
-
-# Start Supervisord
-CMD ["supervisord", "-c", "/etc/supervisor/supervisord.conf"]
+# Start Nginx
+CMD ["nginx", "-g", "daemon off;"]
