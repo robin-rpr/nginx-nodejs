@@ -23,7 +23,7 @@ jobs:
         DOCKER_REGISTRY_URL: ${{ secrets.REGISTRY_HOST }}
       
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag nginx-nodejs:latest
+      run: docker build . --file Dockerfile --tag ${{ secrets.REGISTRY_HOST }}/${{ secrets.REGISTRY_USERNAME }}/nginx-nodejs:latest
     
     - name: Push to GitHub Container Registry
       uses: actions-hub/docker@master
