@@ -18,9 +18,8 @@ RUN add-apt-repository ppa:nginx/stable && apt-get update \
  && apt-get -y install nginx-full \
  && echo "daemon off;" >> /etc/nginx/nginx.conf
 
-# Add files
-#supervisor
+# Add Config files
 ADD nginx-nodejs.conf /etc/supervisor/conf.d/nginx-nodejs.conf
 
-# Run
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"
+# Start Supervisord
+RUN ["supervisord", "-c", "/etc/supervisor/supervisord.conf"]
