@@ -22,4 +22,4 @@ RUN add-apt-repository ppa:nginx/stable && apt-get update \
 ADD nginx-nodejs.conf /etc/supervisor/conf.d/nginx-nodejs.conf
 
 # Start Supervisord
-RUN supervisord -c /etc/supervisor/supervisord.conf
+CMD ["supervisord", "-c", "/etc/supervisor/supervisord.conf"]
