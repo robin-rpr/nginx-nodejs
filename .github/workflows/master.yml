@@ -1,0 +1,31 @@
+name: Master
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      
+    - name: Login to Docker Container Registry
+      uses: actions-hub/docker/login@master
+      env:
+        DOCKER_USERNAME: ${{ secrets.REGISTRY_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
+        DOCKER_REGISTRY_URL: ${{ secrets.REGISTRY_HOST }}
+      
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag nginx-nodejs:latest
+    
+    - name: Push harvester/api to Docker Comtainer Registry
+      uses: actions-hub/docker@master
+      with:
+        args: push ${{ secrets.REGISTRY_HOST }}/${{ secrets.REGISTRY_USERNAME }}/nginx-nodejs:latest
