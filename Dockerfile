@@ -7,11 +7,13 @@ ENV DEBIAN_FRONTEND noninteractive
 # Update
 RUN apt-get update
 
-### Start editing ###
-# Install package here for cache
 RUN apt-get -y install supervisor software-properties-common logrotate curl
-RUN curl -sL https://deb.nodesource.com/setup | bash - \
- && apt-get -y install nodejs python build-essential
+
+# Install Node.js Latest
+RUN curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash - \
+ sudo apt-get install -y nodejs
+ 
+# Install Nginx Stable
 RUN add-apt-repository ppa:nginx/stable && apt-get update \
  && apt-get -y install nginx-full \
  && echo "daemon off;" >> /etc/nginx/nginx.conf
