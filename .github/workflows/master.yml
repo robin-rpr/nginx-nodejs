@@ -25,7 +25,7 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag nginx-nodejs:latest
     
-    - name: Push harvester/api to Docker Comtainer Registry
+    - name: Push to GitHub Container Registry
       uses: actions-hub/docker@master
       with:
         args: push ${{ secrets.REGISTRY_HOST }}/${{ secrets.REGISTRY_USERNAME }}/nginx-nodejs:latest
