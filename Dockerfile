@@ -15,7 +15,27 @@ RUN curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash - \
  
 # Install Nginx Stable
 RUN add-apt-repository ppa:nginx/stable && apt-get update \
- && apt-get -y install nginx-full
+ && apt-get -y install nginx-full \
+ && echo "daemon off;" >> /etc/nginx/nginx.conf
 
-# Start Nginx
-CMD ["nginx", "-g", "daemon off;"]
+# Create Supervisord Log
+RUN mkdir -p /var/log/supervisord
+RUN touch /tmp/supervisord.log
+
+# Supply Config file
+RUN echo '[supervisord]\n\
+nodaemon=true\n\
+childlogdir=/var/log/supervisord/\n\
+logfile=/tmp/supervisord.log\n\
+[program:nginx]\n\
+command=/usr/sbin/nginx -c /etc/nginx/nginx.conf\n\
+[program:rsyslog]\n\
+command=/usr/sbin/rsyslogd -n -c3\n\
+[program:cronjob]\n\
+command=/usr/sbin/cron -f\n'\
+>> /etc/supervisor/conf.d/nginx-nodejs.conf
+
+COPY --from=builder home/node/app/nginx/apps/api/${NGINX_CONFIG} /etc/nginx/conf.d/default.conf
+
+# Start Supervisord
+CMD ["supervisord", "-c", "/etc/supervisor/supervisord.conf"]
