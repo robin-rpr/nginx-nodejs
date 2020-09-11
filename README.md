@@ -46,7 +46,7 @@ CMD ["supervisord", "-c", "/etc/supervisor/supervisord.conf"]
 Thanks to the lovely maintainer of
 - [klokantech/supervisord](https://hub.docker.com/r/klokantech/supervisord)
 
-## Donate `(who cares?)`
+## Donate `(who cares anyway?)`
 Feel free to help me out during moving as I have to pay two rents (for two apartments) 
 at the same time, for almost one and a half months. Gah!
 
