@@ -35,7 +35,5 @@ command=/usr/sbin/rsyslogd -n -c3\n\
 command=/usr/sbin/cron -f\n'\
 >> /etc/supervisor/conf.d/nginx-nodejs.conf
 
-COPY --from=builder home/node/app/nginx/apps/api/${NGINX_CONFIG} /etc/nginx/conf.d/default.conf
-
 # Start Supervisord
 CMD ["supervisord", "-c", "/etc/supervisor/supervisord.conf"]
