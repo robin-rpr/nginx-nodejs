@@ -3,7 +3,6 @@
 ## Example
 Example is located in [`examples/hello-world`](examples/hello-world)
 
-Your Workdir:
 ```
 package.json
 main.js
@@ -11,7 +10,7 @@ default.conf # NGINX Config
 Dockerfile # See below
 ```
 
-This is your Dockerfile:
+Dockerfile:
 ```
 FROM robinrpr/nginx-nodejs:latest
 
