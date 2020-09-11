@@ -48,7 +48,7 @@ Thanks to the lovely maintainer of
 
 ## Donate `(who cares anyway?)`
 Feel free to help me out during moving as I have to pay two rents (for two apartments) 
-at the same time, for almost one and a half months. Gah!
+at the same time, for almost one and a half months starting 15. September 2020. Gah!
 
 Every penny is appreciated. Thank you!
 
