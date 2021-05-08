@@ -42,15 +42,7 @@ CMD ["supervisord", "-c", "/etc/supervisor/supervisord.conf"]
 > **Note:** For all other files please see [`examples/hello-world`](examples/hello-world) as mentioned above.
 
 ## Credits
-Thanks to the lovely maintainer of
+Thanks to the maintainer of
 - [klokantech/supervisord](https://hub.docker.com/r/klokantech/supervisord)
-
-## Donate `(who cares anyway?)`
-Feel free to help me out during moving as I have to pay two rents (for two apartments) 
-at the same time, for almost one and a half months starting 15. September 2020. Gah!
-
-Every penny is appreciated. Thank you!
-
-[Help me out via Paypal](https://paypal.me/robinrpr)
 
 Cheers!
